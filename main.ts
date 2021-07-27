@@ -30,7 +30,18 @@ radio.onReceivedString(function (receivedString) {
         . . . . .
         `)
 })
-let radio2 = 1
+input.onGesture(Gesture.Shake, function () {
+    radio2 += 1
+    radio.setGroup(radio2)
+    if (radio2 == 8) {
+        radio2 = 1
+        radio.setGroup(radio2)
+        basic.showString("" + (radio2))
+    }
+    basic.showString("" + (radio2))
+})
+let radio2 = 0
+radio2 = 1
 basic.showString("" + (radio2))
 basic.forever(function () {
     if (input.buttonIsPressed(Button.A)) {
@@ -40,13 +51,47 @@ basic.forever(function () {
         radio.sendString("ralla")
     }
     if (input.buttonIsPressed(Button.AB)) {
-        radio2 += 1
-        radio.setGroup(radio2)
-        if (radio2 == 8) {
-            radio2 = 1
-            radio.setGroup(radio2)
-            basic.showString("" + (radio2))
-        }
-        basic.showString("" + (radio2))
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . # . .
+            . . . . .
+            . . . . .
+            `)
+        basic.showLeds(`
+            . . . . .
+            . . # . .
+            . # # # .
+            . . # . .
+            . . . . .
+            `)
+        basic.showLeds(`
+            . . # . .
+            . # # # .
+            # # # # #
+            . # # # .
+            . . # . .
+            `)
+        basic.showLeds(`
+            . . # . .
+            . # # # .
+            # # . # #
+            . # # # .
+            . . # . .
+            `)
+        basic.showLeds(`
+            . . # . .
+            . . . . .
+            # . . . #
+            . . . . .
+            . . # . .
+            `)
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            `)
     }
 })
